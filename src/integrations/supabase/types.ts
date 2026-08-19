@@ -14,7 +14,114 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      deployments: {
+        Row: {
+          abi: Json
+          bytecode: string
+          chain_id: number
+          compiler_version: string
+          contract_address: string
+          created_at: string
+          decimals: number
+          deployed_bytecode: string | null
+          description: string | null
+          id: string
+          logo: string | null
+          network: string
+          openzeppelin_version: string
+          optimizer: boolean
+          optimizer_runs: number
+          owner_address: string
+          source_code: string
+          source_hash: string
+          supply: number
+          token_name: string
+          token_symbol: string
+          transaction_hash: string
+          wallet_address: string
+        }
+        Insert: {
+          abi: Json
+          bytecode: string
+          chain_id: number
+          compiler_version: string
+          contract_address: string
+          created_at?: string
+          decimals?: number
+          deployed_bytecode?: string | null
+          description?: string | null
+          id?: string
+          logo?: string | null
+          network: string
+          openzeppelin_version: string
+          optimizer?: boolean
+          optimizer_runs?: number
+          owner_address: string
+          source_code: string
+          source_hash: string
+          supply: number
+          token_name: string
+          token_symbol: string
+          transaction_hash: string
+          wallet_address: string
+        }
+        Update: {
+          abi?: Json
+          bytecode?: string
+          chain_id?: number
+          compiler_version?: string
+          contract_address?: string
+          created_at?: string
+          decimals?: number
+          deployed_bytecode?: string | null
+          description?: string | null
+          id?: string
+          logo?: string | null
+          network?: string
+          openzeppelin_version?: string
+          optimizer?: boolean
+          optimizer_runs?: number
+          owner_address?: string
+          source_code?: string
+          source_hash?: string
+          supply?: number
+          token_name?: string
+          token_symbol?: string
+          transaction_hash?: string
+          wallet_address?: string
+        }
+        Relationships: []
+      }
+      scans: {
+        Row: {
+          chain_id: number
+          contract_address: string
+          created_at: string
+          id: string
+          network: string
+          result: Json | null
+          wallet_address: string | null
+        }
+        Insert: {
+          chain_id: number
+          contract_address: string
+          created_at?: string
+          id?: string
+          network: string
+          result?: Json | null
+          wallet_address?: string | null
+        }
+        Update: {
+          chain_id?: number
+          contract_address?: string
+          created_at?: string
+          id?: string
+          network?: string
+          result?: Json | null
+          wallet_address?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
