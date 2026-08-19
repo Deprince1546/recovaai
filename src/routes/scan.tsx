@@ -213,13 +213,18 @@ function ScanPage() {
             {analysis && (
               <section className="glass-panel mt-5 rounded-3xl p-6">
                 <p className="eyebrow">AI analysis</p>
-                <p className="mt-3 text-sm leading-relaxed text-foreground">{analysis.summary}</p>
+                <p className="mt-3 text-sm leading-relaxed text-foreground">
+                  {analysis["summary"]}
+                </p>
                 <dl className="mt-5 grid gap-4 sm:grid-cols-2">
-                  <Row label="Recovery status" value={analysis.recoveryStatus ?? "—"} />
-                  <Row label="Reason" value={analysis.recoveryReason ?? "—"} />
-                  <Row label="Potential stuck value" value={analysis.potentialStuckValue ?? "—"} />
-                  <Row label="Risk" value={analysis.risk ?? "—"} />
-                  <Row label="Confidence" value={analysis.confidence ?? "—"} />
+                  <Row label="Recovery status" value={analysis["recoveryStatus"] ?? "—"} />
+                  <Row label="Reason" value={analysis["recoveryReason"] ?? "—"} />
+                  <Row
+                    label="Potential stuck value"
+                    value={analysis["potentialStuckValue"] ?? "—"}
+                  />
+                  <Row label="Risk" value={analysis["risk"] ?? "—"} />
+                  <Row label="Confidence" value={analysis["confidence"] ?? "—"} />
                 </dl>
               </section>
             )}
