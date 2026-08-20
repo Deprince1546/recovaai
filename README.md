@@ -1,176 +1,850 @@
-# Recova Vision
+RECOVA AI
 
-Create a new project with Supabase enabled. Build the full front end and backend of the uploaded tool Prompt using all necessary library and dependencies. IMPORTANT: DO NOT REBUILD OR REMOVE THE EXISTING RECOVA FUNCTIONALITY.
+AI-Powered Onchain Recovery & Token Infrastructure
 
+RECOVA AI is an AI-powered onchain infrastructure platform designed to help users create recovery-enabled EVM tokens, scan token contracts for accidentally trapped assets, identify recoverable balances, and execute authorized recovery transactions.
 
+Built with a primary focus on X Layer, RECOVA combines blockchain infrastructure, AI-powered analysis, automated contract inspection, and wallet-based transaction signing into one platform.
 
-I have already provided and you have already built the RECOVA token creation, deployment, recovery, scanner, AI, backend, wallet connection, X Layer Testnet/Mainnet toggle, and contract compilation functionality.
+> Create. Scan. Detect. Recover.
 
 
 
-Now I want you to REPLACE ONLY THE CURRENT VISUAL LANDING-PAGE DESIGN with the exact design language below.
+🚀 Live Demo
 
+Live Application:
+[recova.vercel.app](https://recova.vercel.app/?utm_source=chatgpt.com)
 
+GitHub Repository:
+[github.com/Deprince1546/recovaai](https://github.com/Deprince1546/recovaai?utm_source=chatgpt.com)
 
-Use the existing RECOVA functionality/components underneath this UI. Do not break, mock, simplify, or remove any working feature.
 
 
 
-DESIGN SOURCE:
+✨ What RECOVA Does
 
-Use this exact Vesper.ai landing-page specification as the visual reference:
+RECOVA is built around two core systems:
 
-[PASTE THE VESPER DESIGN SPECIFICATION I PROVIDED ABOVE]
+1. Safe Token Creation
 
+Users can create ERC-20 tokens with a built-in recovery mechanism.
 
+Token creators can provide:
 
-ADAPT IT TO RECOVA:
+Token name
 
-- Brand name: RECOVA
+Token symbol
 
-- Keep the existing RECOVA navigation/functionality.
+Initial supply
 
-- Keep the existing Create Token, Generate with AI, Scanner, Recovery, Wallet and network functionality.
+Token logo
 
-- Do NOT add Vesper.ai text, Vesper sections, pricing, FAQs, or unrelated content.
+Description
 
-- Preserve RECOVA's actual buttons and routes, but style them using the Vesper liquid-glass/metal visual language.
+Creator/owner wallet
 
-- Keep the black #000000 cinematic aesthetic.
+Network selection
 
-- Use the exact Inter + Instrument Serif typography system from the specification.
+Testnet/Mainnet deployment
 
-- Use the exact button, navigation pill, badge, animation, spacing, responsive and mobile-menu styling from the specification.
 
-- The main hero should use the existing RECOVA messaging/content rather than Vesper's copy.
+The deployed token uses the RecovaSafeToken smart contract, which supports recovery of:
 
+Native X Layer OKB accidentally sent to the contract
 
+ERC-20 tokens accidentally sent to the contract
 
-VIDEO BACKGROUND:
 
-Use this exact video as the RECOVA hero background:
+Recovery functions are owner-controlled and require the appropriate wallet authorization.
 
-https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260818_072341_50851634-bbc3-4c33-9acc-7647d4db44aa.mp4
 
 
 
-The video must:
+2. AI-Powered Contract Scanner
 
-- Cover the entire hero viewport.
+Users can paste an X Layer contract address into RECOVA's scanner.
 
-- Play automatically, muted, looped and inline.
+The platform analyzes available onchain and offchain information to identify:
 
-- Have 100% opacity with NO dark overlay/scrim.
+Token name
 
-- Sit behind the UI while all text/buttons/navigation remain above it.
+Token symbol
 
-- Work on desktop and mobile.
+Token logo
 
-- If the source HEVC/10-bit file cannot be decoded reliably, RE-ENCODE it to browser-compatible H.264 MP4 and WebM and use those generated assets.
+Contract address
 
-- Generate/use a poster frame fallback.
+Creator/owner information
 
-- Do NOT replace the video with a gradient, static image or fake background.
+Native asset balance
 
+ERC-20 balances
 
+Potentially recoverable assets
 
-LOGO:
+Recovery methods exposed by the contract
 
-Use the exact white SVG mark from the specification.
+Liquidity information
 
-RECOVA must appear beside the mark.
+Market information
 
-The logo MUST render correctly in:
+Social profiles and project links
 
-1. Lovable preview
 
-2. Local production build
+RECOVA uses both backend blockchain infrastructure and AI-powered analysis to organize this information into an easy-to-understand recovery report.
 
-3. Vercel deployment
+Recovery Status
 
+The scanner distinguishes between:
 
+Recoverable
 
-Do not use a broken relative asset path. Make the logo a reliable imported/static/public asset and verify it exists in the production build.
+The contract exposes a supported recovery mechanism and the required authority is available.
 
+Not Recoverable
 
+RECOVA cannot identify a valid authorized recovery path.
 
-IMPORTANT:
+> RECOVA never bypasses contract ownership, wallet signatures, blockchain permissions, or protocol security.
 
-Do not merely make the page look similar. Reproduce the visual system: black cinematic background, video positioning, typography, liquid-metal navigation pills, glass buttons, spacing, entrance animations, responsive behavior, burger menu, and stat styling.
 
 
 
-FUNCTIONALITY PRESERVATION:
 
-After applying the visual redesign, verify that:
 
-- Connect Wallet still requires an actual OKX wallet connection/request and user signature/approval where required.
+🧠 RECOVA AI
 
-- X Layer Testnet/Mainnet toggle still works.
+RECOVA uses AI to transform raw blockchain and web data into useful intelligence.
 
-- Create Token still deploys the actual compiled recovery contract.
+The AI layer can assist with:
 
-- ABI and bytecode still come from the actual Solidity compilation.
+Contract analysis
 
-- Token creation still works on X Layer Testnet.
+Token identification
 
-- Scanner still reads real X Layer contract data.
+Creator identification
 
-- Recovery actions still require the correct wallet authorization.
+Project/social discovery
 
-- AI generation still works.
+Recovery-path analysis
 
-- Backend/API integrations remain intact.
+Token metadata generation
 
-- No API keys are exposed in frontend code.
+Token concept generation
 
+Natural-language explanations
 
 
-DO NOT MARK THIS COMPLETE JUST BECAUSE THE UI LOOKS CORRECT.
+AI does not override blockchain permissions.
 
+The blockchain remains the final authority.
 
 
-Before finishing:
 
-1. Run the production build.
 
-2. Fix all TypeScript/build/runtime errors.
+⚡ X Layer
 
-3. Verify the video actually renders.
+RECOVA is primarily built for X Layer, the EVM-compatible Layer 2 ecosystem.
 
-4. Verify the RECOVA logo renders.
+The platform supports:
 
-5. Verify wallet connection works.
+X Layer Mainnet
 
-6. Verify Testnet/Mainnet switching works.
+Chain ID: 196
 
-7. Verify Create Token works on X Layer Testnet.
+Native asset: OKB
 
-8. Verify the scanner works with a real X Layer contract.
 
-9. Verify the deployed production build works on Vercel.
+X Layer Testnet
 
+Chain ID: 1952
 
+Native asset: OKB
 
-The final result must be the existing fully functional RECOVA application using this exact cinematic Vesper-inspired landing-page design system.
 
-This project was built with [Lovable](https://lovable.dev).
+Users can switch between Testnet and Mainnet through the application.
 
-## Build with Lovable
+All transactions require actual wallet authorization.
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/71cff87f-02cf-4672-b52b-70a27c4ce5d0).
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
 
-## Development
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+🔐 Wallet Security
 
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+RECOVA does not treat clicking Connect Wallet as authorization.
+
+Wallet interactions require the user's wallet to approve/sign the relevant operation.
+
+Supported EVM wallet functionality includes:
+
+Wallet connection
+
+Account detection
+
+Network detection
+
+Transaction signing
+
+Contract deployment
+
+Recovery authorization
+
+
+Private keys are never requested by RECOVA's frontend.
+
+
+
+
+🛠️ Smart Contract Architecture
+
+RECOVA's token creation system is based on:
+
+RecovaSafeToken.sol
+
+The contract provides:
+
+ERC-20 Token
+      │
+      ├── Native OKB Recovery
+      │     ├── recoverNative()
+      │     └── recoverAllNative()
+      │
+      └── ERC-20 Recovery
+            ├── recoverERC20()
+            └── recoverAllERC20()
+
+The contract uses OpenZeppelin components including:
+
+ERC20
+
+Ownable
+
+SafeERC20
+
+ReentrancyGuard
+
+
+Single Source of Truth
+
+RECOVA generates the ABI and bytecode from the actual Solidity compilation artifact.
+
+The frontend does not rely on manually maintained function selectors or mismatched ABI definitions.
+
+This helps ensure that:
+
+Solidity Source
+      ↓
+Compilation
+      ↓
+ABI + Bytecode
+      ↓
+Deployment
+      ↓
+Scanner
+      ↓
+Recovery Transactions
+
+all correspond to the same contract implementation.
+
+
+
+
+💰 Recovery Fee
+
+RECOVA uses a simple fixed platform fee:
+
+10%
+
+For every successfully completed recovery through RECOVA:
+
+Recovered Value
+      │
+      ├── 90% → Authorized recipient
+      │
+      └── 10% → RECOVA platform fee
+
+The exact fee implementation and transaction flow should always be visible to the user before signing.
+
+RECOVA does not claim or withdraw assets without the authorization required by the underlying blockchain or smart contract.
+
+
+
+
+🧩 AI Token Generator
+
+RECOVA also provides an AI-assisted token creation experience.
+
+Users can generate a token concept automatically.
+
+The AI can generate:
+
+Token name
+
+Token symbol
+
+Token description
+
+Token artwork/logo
+
+Default supply of 1,000,000,000
+
+
+Users can then:
+
+Regenerate
+
+Edit the generated information
+
+Accept the result
+
+Deploy the token
+
+
+The AI-generated information is only a starting point. The user remains responsible for reviewing the token configuration before deployment.
+
+
+
+
+🔎 Contract Recovery Flow
+
+A typical recovery workflow looks like:
+
+1. Paste Contract Address
+          ↓
+2. RECOVA scans blockchain
+          ↓
+3. Identify contract + balances
+          ↓
+4. Inspect ABI / recovery capabilities
+          ↓
+5. Identify authorized recovery path
+          ↓
+6. Calculate potentially recoverable amount
+          ↓
+7. Show recovery details
+          ↓
+8. User connects authorized wallet
+          ↓
+9. User reviews transaction
+          ↓
+10. User signs transaction
+          ↓
+11. Blockchain confirms recovery
+          ↓
+12. RECOVA applies 10% platform fee
+
+
+
+
+🗺️ Roadmap
+
+Phase 1 — X Layer Foundation ✅
+
+[x] X Layer integration
+
+[x] X Layer Testnet
+
+[x] X Layer Mainnet support
+
+[x] ERC-20 token creation
+
+[x] Recovery-enabled token contracts
+
+[x] Native OKB recovery
+
+[x] ERC-20 recovery
+
+[x] Wallet connection
+
+[x] Contract scanning
+
+[x] AI-powered analysis
+
+[x] AI token generation
+
+[x] Production deployment infrastructure
+
+
+
+
+
+Phase 2 — Advanced X Layer Intelligence 🚧
+
+[ ] Deeper X Layer contract intelligence
+
+[ ] Automated recovery-path detection
+
+[ ] Advanced token liquidity analysis
+
+[ ] Historical contract analysis
+
+[ ] Creator-wallet intelligence
+
+[ ] Recovery opportunity monitoring
+
+[ ] Automated alerts
+
+[ ] Recovery history dashboard
+
+[ ] Portfolio of discovered recovery opportunities
+
+
+
+
+
+☀️ Phase 3 — Solana Recovery
+
+RECOVA's next major expansion is a Solana recovery system, with a focus on Token-2022 accounts and eligible excess lamports.
+
+Solana's Token-2022 program provides the WithdrawExcessLamports instruction for withdrawing excess lamports from eligible Token-2022 accounts. The operation requires the appropriate authority/signature; RECOVA will therefore use AI to identify the relevant authority and recovery path rather than bypassing authorization. 
+
+Planned capabilities
+
+Solana wallet integration
+
+Token-2022 detection
+
+Mint-address scanning
+
+Excess-lamport detection
+
+Token authority analysis
+
+Creator/authority wallet discovery
+
+AI-powered mint intelligence
+
+Recovery eligibility detection
+
+Authorized withdraw_excess_lamports transactions
+
+Recovery opportunity discovery
+
+Solana recovery history
+
+10% RECOVA platform fee
+
+
+Planned flow
+
+Token/Mint Address
+        ↓
+RECOVA AI
+        ↓
+Token-2022 Detection
+        ↓
+Authority Discovery
+        ↓
+Excess Lamport Detection
+        ↓
+Recovery Eligibility
+        ↓
+Authorized Wallet
+        ↓
+User Signs Transaction
+        ↓
+Recovery
+        ↓
+90% Recipient / 10% RECOVA
+
+Token-2022 is an extensible version of Solana's token program and uses extensions for additional mint/account functionality. 
+
+
+
+
+💡 Recovery Opportunity Marketplace
+
+A longer-term RECOVA goal is to create an ecosystem where users can discover legitimate, authorized recovery opportunities.
+
+Potential future functionality:
+
+Public recovery opportunity discovery
+
+AI-ranked opportunities
+
+Creator/authority identification
+
+Recovery-value estimation
+
+Opportunity claiming
+
+Automated fee calculation
+
+Recovery history
+
+Reputation system
+
+Onchain proof of completed recovery
+
+
+The goal is to allow participants to earn from providing recovery services only where the underlying protocol/account permissions allow the recovery.
+
+
+
+
+🔮 Future Vision
+
+RECOVA aims to evolve from a recovery tool into an AI-powered onchain recovery network.
+
+RECOVA AI
+                  │
+       ┌──────────┴──────────┐
+       │                     │
+    X Layer               Solana
+       │                     │
+       ▼                     ▼
+ EVM Recovery         Token-2022 Recovery
+       │                     │
+       └──────────┬──────────┘
+                  ▼
+          Recovery Network
+                  │
+                  ▼
+          AI Opportunity
+             Discovery
+
+The long-term vision is to make accidentally trapped onchain value easier to identify, understand, and recover through transparent, permission-aware infrastructure.
+
+
+
+
+🧑‍💻 Tech Stack
+
+RECOVA is built using modern Web3 and AI technologies.
+
+Frontend
+
+TypeScript
+
+React
+
+TanStack Start
+
+Tailwind CSS
+
+HTML5
+
+CSS3
+
+
+Blockchain
+
+Solidity ^0.8.20
+
+EVM
+
+X Layer
+
+viem / EVM wallet tooling
+
+OpenZeppelin Contracts
+
+
+Backend
+
+TypeScript
+
+TanStack server routes
+
+REST/API architecture
+
+Supabase
+
+
+AI
+
+OpenRouter
+
+Groq
+
+Coasty AI
+
+Pollination
+
+
+Data & Automation
+
+Firecrawl
+
+OKX Onchain APIs
+
+Blockchain RPC endpoints
+
+
+Planned Solana Stack
+
+Solana
+
+Token-2022
+
+Solana Web3 tooling
+
+withdraw_excess_lamports
+
+AI-powered authority discovery
+
+
+
+
+
+📁 Project Structure
+
+A simplified architecture:
+
+RECOVA
+├── frontend
+│   ├── UI
+│   ├── Token Creator
+│   ├── AI Generator
+│   ├── Scanner
+│   └── Wallet
+│
+├── backend
+│   ├── API
+│   ├── Blockchain Scanner
+│   ├── AI Services
+│   └── Data Services
+│
+├── contracts
+│   └── RecovaSafeToken.sol
+│
+├── deployment
+│   └── Contract Deployment
+│
+└── recovery
+    ├── EVM Recovery
+    └── Solana Recovery [Roadmap]
+
+
+
+
+🚀 Getting Started
+
+Prerequisites
+
+You should have:
+
+Node.js 18+
+
+npm / pnpm
+
+Git
+
+An EVM-compatible wallet
+
+X Layer Testnet OKB for development
+
+Required API credentials
+
+
+
+
+
+Installation
+
+Clone the repository:
+
+git clone https://github.com/Deprince1546/recovaai.git
+cd recovaai
+
+Install dependencies:
+
+npm install
+
+Create your environment file:
+
+cp .env.example .env
+
+Add the required environment variables.
+
+Never commit private keys, API secrets, service-role keys, or encryption keys to GitHub.
+
+
+
+
+Development
+
+Start the development server:
+
 npm run dev
-```
+
+Then open the local application in your browser.
+
+
+
+
+Production Build
+
+npm run build
+
+Run the production server using the project's configured production command.
+
+Before deployment, verify that:
+
+Contract compilation succeeds
+
+ABI is generated correctly
+
+Bytecode is generated correctly
+
+API routes work
+
+Wallet connection works
+
+Testnet deployment works
+
+Recovery transactions work
+
+Required production environment variables are configured
+
+
+
+
+
+🔑 Environment Variables
+
+Depending on the enabled features, RECOVA may require:
+
+SUPABASE_URL=
+SUPABASE_SERVICE_ROLE_KEY=
+CONFIG_ENCRYPTION_KEY=
+
+OPENROUTER_API_KEY=
+COASTY_API_KEY=
+FIRECRAWL_API_KEY=
+POLLINATION_API_KEY=
+GROQ_API_KEY=
+
+OKX_API_KEY=
+OKX_SECRET_KEY=
+OKX_PASSPHRASE=
+OKX_PROJECT_ID
+Never expose server-side secrets in frontend JavaScript.
+
+
+
+
+🤝 Contributing
+
+Contributions are welcome.
+
+1. Fork the repository
+
+git fork https://github.com/Deprince1546/recovaai
+
+2. Create a branch
+
+git checkout -b feature/your-feature
+
+3. Make your changes
+
+Follow the existing project architecture and coding conventions.
+
+4. Test your changes
+
+At minimum:
+
+npm run build
+
+Also test any affected blockchain transaction flows on Testnet before submitting a PR.
+
+5. Commit
+
+git commit -m "feat: add your feature"
+
+6. Push
+
+git push origin feature/your-feature
+
+7. Open a Pull Request
+
+Explain:
+
+What you changed
+
+Why you changed it
+
+How you tested it
+
+Any blockchain/network implications
+
+
+
+
+
+🔒 Security
+
+RECOVA interacts with blockchain assets and smart contracts. Security is therefore a core requirement.
+
+Please:
+
+Never share private keys
+
+Never commit secrets
+
+Never bypass wallet authorization
+
+Never attempt to bypass contract ownership
+
+Never assume an asset is recoverable without verifying the protocol's permissions
+
+Test contracts on Testnet before Mainnet deployment
+
+Review transactions before signing
+
+
+Reporting a Vulnerability
+
+If you discover a security vulnerability, please do not immediately publish exploit details publicly.
+
+Contact the project maintainers privately with:
+
+Vulnerability description
+
+Affected component
+
+Reproduction steps
+
+Potential impact
+
+Suggested mitigation
+
+
+
+
+⚠️ Disclaimer
+
+RECOVA provides blockchain analysis and recovery infrastructure.
+
+A detected balance does not automatically mean that the balance is legally or technically recoverable.
+
+Recovery depends on the underlying blockchain protocol, smart-contract implementation, account ownership, authority configuration, and required wallet signatures.
+
+Users are responsible for reviewing transactions before signing them.
+
+RECOVA does not guarantee recovery of any asset.
+
+
+
+📜 License
+
+This project is currently under active development.
+
+See the repository for the applicable license and usage terms.
+
+
+
+
+🌐 Links
+
+Website / Demo: [RECOVA AI](https://recova.vercel.app/?utm_source=chatgpt.com)
+
+GitHub: [RECOVA AI on GitHub](https://github.com/Deprince1546/recovaai?utm_source=chatgpt.com)
+
+
+
+RECOVA AI
+
+Create. Scan. Detect. Recover.
+
+*Building safer infrastructure for the onchain world.*
