@@ -48,7 +48,7 @@ function ScanPage() {
   const [recovering, setRecovering] = useState(false);
 
   async function handleScan() {
-    if (!isAddress(query.trim())) {
+    if (!isAddress(query.trim(), { strict: false })) {
       toast.error("Enter a valid contract address.");
       return;
     }

@@ -1,15 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
-import { createClient } from "@supabase/supabase-js";
-
-function serverSupabase() {
-  return createClient(
-    process.env["VITE_SUPABASE_URL"] ?? import.meta.env["VITE_SUPABASE_URL"],
-    process.env["VITE_SUPABASE_PUBLISHABLE_KEY"] ??
-      import.meta.env["VITE_SUPABASE_PUBLISHABLE_KEY"],
-    { auth: { persistSession: false, autoRefreshToken: false } },
-  );
-}
+import { serverSupabase } from "./supabase-server";
 
 export const recordDeployment = createServerFn({ method: "POST" })
   .inputValidator((d) =>
