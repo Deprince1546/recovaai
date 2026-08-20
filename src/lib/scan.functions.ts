@@ -1,50 +1,15 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
-import {
-  createPublicClient,
-  formatUnits,
-  getAddress,
-  http,
-  isAddress,
-  parseAbi,
-  type Address,
-} from "viem";
+import { formatUnits, getAddress, isAddress, type Address } from "viem";
 import { NETWORKS, type NetworkKey } from "./networks";
+import { RECOVERY_SELECTORS, TRANSFER_TOPIC, clientFor, erc20Abi } from "./scan.shared";
 import artifact from "@/contracts/RecovaSafeToken.artifact.json";
-
-const erc20Abi = parseAbi([
-  "function name() view returns (string)",
-  "function symbol() view returns (string)",
-  "function decimals() view returns (uint8)",
-  "function totalSupply() view returns (uint256)",
-  "function balanceOf(address) view returns (uint256)",
-  "function owner() view returns (address)",
-]);
-
-const TRANSFER_TOPIC = "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef" as const;
-
-// Function selectors that indicate a possible withdrawal/recovery mechanism.
-const RECOVERY_SELECTORS: Record<string, string> = {
-  "0x": "",
-  ce6ed23a: "recoverNative(address,uint256)",
-  "8f5e51ca": "recoverAllNative(address)",
-  "9b1b4c4a": "recoverERC20(address,address,uint256)",
-  "3ccfd60b": "withdraw()",
-  "51cff8d9": "withdraw(address)",
-  db2e21bc: "emergencyWithdraw()",
-  "01681a62": "sweep(address)",
-};
-
-function clientFor(network: NetworkKey) {
-  const chain = NETWORKS[network];
-  return createPublicClient({ chain, transport: http(chain.rpcUrls.default.http[0]) });
-}
 
 export const scanContract = createServerFn({ method: "POST" })
   .inputValidator((d) =>
     z
       .object({
-        address: z.string().refine((a) => isAddress(a), "Invalid contract address"),
+        address: z.string().refine((a) => isAddress(a, { strict: false }), "Invalid address"),
         network: z.enum(["testnet", "mainnet"]),
       })
       .parse(d),
