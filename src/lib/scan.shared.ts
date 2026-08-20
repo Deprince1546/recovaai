@@ -1,5 +1,12 @@
-import { createPublicClient, http, parseAbi } from "viem";
+import {
+  createPublicClient,
+  http,
+  parseAbi,
+  toFunctionSelector,
+  type AbiFunction,
+} from "viem";
 import { NETWORKS, type NetworkKey } from "./networks";
+import artifact from "@/contracts/RecovaSafeToken.artifact.json";
 
 export const erc20Abi = parseAbi([
   "function name() view returns (string)",
@@ -13,16 +20,29 @@ export const erc20Abi = parseAbi([
 export const TRANSFER_TOPIC =
   "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef" as const;
 
-/** Function selectors that indicate a possible withdrawal/recovery mechanism. */
-export const RECOVERY_SELECTORS: Record<string, string> = {
-  ce6ed23a: "recoverNative(address,uint256)",
-  "8f5e51ca": "recoverAllNative(address)",
-  "9b1b4c4a": "recoverERC20(address,address,uint256)",
-  "3ccfd60b": "withdraw()",
-  "51cff8d9": "withdraw(address)",
-  db2e21bc: "emergencyWithdraw()",
-  "01681a62": "sweep(address)",
-};
+/** Recovery entry points, derived from the compiled RecovaSafeToken ABI — never hardcoded. */
+export const RECOVERY_FUNCTION_NAMES = [
+  "recoverNative",
+  "recoverAllNative",
+  "recoverERC20",
+  "recoverAllERC20",
+] as const;
+
+export type RecoveryFunctionName = (typeof RECOVERY_FUNCTION_NAMES)[number];
+
+const abiFunctions = (artifact.abi as unknown as AbiFunction[]).filter(
+  (item) => item.type === "function",
+);
+
+/** selector -> human signature, computed from the compilation artifact. */
+export const RECOVERY_SELECTORS: Record<string, string> = Object.fromEntries(
+  abiFunctions
+    .filter((fn) => (RECOVERY_FUNCTION_NAMES as readonly string[]).includes(fn.name))
+    .map((fn) => {
+      const signature = `${fn.name}(${fn.inputs.map((i) => i.type).join(",")})`;
+      return [toFunctionSelector(fn).slice(2).toLowerCase(), signature];
+    }),
+);
 
 export function clientFor(network: NetworkKey) {
   const chain = NETWORKS[network];

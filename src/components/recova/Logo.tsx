@@ -1,3 +1,7 @@
+/**
+ * RECOVA mark — the two offset parallelograms from the brand artwork.
+ * Rendered in currentColor so it stays crisp everywhere (no asset path to break).
+ */
 export function RecovaMark({ className = "h-7 w-7" }: { className?: string }) {
   return (
     <svg
@@ -8,16 +12,8 @@ export function RecovaMark({ className = "h-7 w-7" }: { className?: string }) {
       role="img"
       aria-label="RECOVA mark"
     >
-      <path
-        d="M16 1.5 29.5 9v14L16 30.5 2.5 23V9L16 1.5Z"
-        stroke="currentColor"
-        strokeOpacity="0.55"
-        strokeWidth="1.3"
-      />
-      <path
-        d="M11.5 22V10h5.2a3.9 3.9 0 0 1 .6 7.75L21 22h-3.1l-3.3-4.1h-.6V22h-2.5Zm2.5-6.3h2.5a1.85 1.85 0 0 0 0-3.7H14v3.7Z"
-        fill="currentColor"
-      />
+      <path d="M6.6 6.4h11.1l9.7 10.2H16.3L6.6 6.4Z" fill="currentColor" />
+      <path d="M5 17.1h11.1l9.7 10.2H14.7L5 17.1Z" fill="currentColor" />
     </svg>
   );
 }
