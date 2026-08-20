@@ -44,22 +44,24 @@ export const generateTokenLogo = createServerFn({ method: "POST" })
     return { dataUrl: `data:${contentType};base64,${btoa(binary)}`, provider: "pollination" };
   });
 
-const analysisInput = z.object({
-  contractAddress: z.string(),
-  network: z.string(),
-  chainId: z.number(),
-  tokenName: z.string().nullable(),
-  symbol: z.string().nullable(),
-  owner: z.string().nullable(),
-  creator: z.string().nullable(),
-  nativeBalance: z.string(),
-  isRecovaContract: z.boolean(),
-  detectedFunctions: z.array(z.string()),
-  hasCode: z.boolean(),
-});
-
 export const analyzeContract = createServerFn({ method: "POST" })
-  .inputValidator((data) => analysisInput.parse(data))
+  .inputValidator((data) =>
+    z
+      .object({
+        contractAddress: z.string(),
+        network: z.string(),
+        chainId: z.number(),
+        tokenName: z.string().nullable(),
+        symbol: z.string().nullable(),
+        owner: z.string().nullable(),
+        creator: z.string().nullable(),
+        nativeBalance: z.string(),
+        isRecovaContract: z.boolean(),
+        detectedFunctions: z.array(z.string()),
+        hasCode: z.boolean(),
+      })
+      .parse(data),
+  )
   .handler(async ({ data }) => {
     const { text, provider } = await chat(
       'You are a blockchain contract analyst. Only reason about the verified on-chain facts supplied. Never invent balances, addresses, prices or links. Reply with strict JSON only: {"summary":string,"recoveryStatus":string,"recoveryReason":string,"potentialStuckValue":string,"risk":string,"confidence":string}.',
