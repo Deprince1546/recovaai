@@ -10,6 +10,8 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+import { OG_IMAGE } from "@/lib/site";
+
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { WalletProvider } from "../lib/wallet";
 import { SiteHeader } from "../components/recova/SiteHeader";
@@ -93,7 +95,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Deploy recoverable ERC-20 tokens, scan contracts and recover trapped assets on X Layer.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: OG_IMAGE },
     ],
     links: [
       {
@@ -106,7 +110,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap",
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.png", type: "image/png" },
+
     ],
   }),
   shellComponent: RootShell,

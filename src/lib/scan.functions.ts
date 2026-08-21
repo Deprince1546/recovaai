@@ -149,53 +149,7 @@ export const scanContract = createServerFn({ method: "POST" })
 export const getMarketData = createServerFn({ method: "POST" })
   .inputValidator((d) => z.object({ address: z.string(), chainId: z.number() }).parse(d))
   .handler(async ({ data }) => {
-    const apiKey = process.env["OKX_API_KEY"];
-    const secret = process.env["OKX_SECRET_KEY"];
-    const passphrase = process.env["OKX_PASSPHRASE"];
-    if (!apiKey || !secret || !passphrase) return { available: false as const };
-
-    const path = `/api/v5/dex/market/price-info`;
-    const body = JSON.stringify([
-      { chainIndex: String(data.chainId), tokenContractAddress: data.address.toLowerCase() },
-    ]);
-    const timestamp = new Date().toISOString();
-    const prehash = `${timestamp}POST${path}${body}`;
-
-    const enc = new TextEncoder();
-    const key = await crypto.subtle.importKey(
-      "raw",
-      enc.encode(secret),
-      { name: "HMAC", hash: "SHA-256" },
-      false,
-      ["sign"],
-    );
-    const sigBuf = await crypto.subtle.sign("HMAC", key, enc.encode(prehash));
-    const sign = btoa(String.fromCharCode(...new Uint8Array(sigBuf)));
-
-    try {
-      const res = await fetch(`https://web3.okx.com${path}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "OK-ACCESS-KEY": apiKey,
-          "OK-ACCESS-SIGN": sign,
-          "OK-ACCESS-TIMESTAMP": timestamp,
-          "OK-ACCESS-PASSPHRASE": passphrase,
-        },
-        body,
-      });
-      if (!res.ok) return { available: false as const };
-      const json = (await res.json()) as { code?: string; data?: unknown[] };
-      const row = (json.data?.[0] ?? null) as null | Record<string, string>;
-      if (!row) return { available: false as const };
-      return {
-        available: true as const,
-        price: row["price"] ?? null,
-        marketCap: row["marketCap"] ?? null,
-        volume24h: row["volume24H"] ?? null,
-        priceChange24h: row["priceChange24H"] ?? null,
-      };
-    } catch {
-      return { available: false as const };
-    }
+    const { marketData } = await import("./market.server");
+    return marketData(data.address, data.chainId);
   });
+
