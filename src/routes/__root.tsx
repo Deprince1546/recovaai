@@ -10,6 +10,8 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+import { OG_IMAGE } from "@/lib/site";
+
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { WalletProvider } from "../lib/wallet";
 import { SiteHeader } from "../components/recova/SiteHeader";
