@@ -5,6 +5,8 @@ import { chat, parseJson } from "./ai.server";
 export const generateTokenIdea = createServerFn({ method: "POST" })
   .inputValidator((data) => z.object({ hint: z.string().max(400).optional() }).parse(data))
   .handler(async ({ data }) => {
+    const { enforceRateLimit } = await import("./rate-limit.server");
+    await enforceRateLimit("generateTokenIdea", 10, 3600);
     const { text, provider } = await chat(
       "You invent ERC-20 token concepts for the X Layer blockchain. Reply with strict JSON only: {\"name\":string,\"symbol\":string,\"description\":string,\"imagePrompt\":string}. Symbol is 3-5 uppercase letters. Description is max 240 characters.",
       `Create one original token concept${data.hint ? ` about: ${data.hint}` : ""}.`,
@@ -27,6 +29,8 @@ export const generateTokenIdea = createServerFn({ method: "POST" })
 export const generateTokenLogo = createServerFn({ method: "POST" })
   .inputValidator((data) => z.object({ prompt: z.string().min(3).max(400) }).parse(data))
   .handler(async ({ data }) => {
+    const { enforceRateLimit } = await import("./rate-limit.server");
+    await enforceRateLimit("generateTokenLogo", 10, 3600);
     const key = process.env["POLLINATION_API_KEY"];
     const prompt = `Minimal circular crypto token logo, ${data.prompt}, flat vector, high contrast, black background`;
     const url = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=512&height=512&nologo=true&model=flux`;
@@ -63,6 +67,8 @@ export const analyzeContract = createServerFn({ method: "POST" })
       .parse(data),
   )
   .handler(async ({ data }) => {
+    const { enforceRateLimit } = await import("./rate-limit.server");
+    await enforceRateLimit("analyzeContract", 30, 3600);
     const { text, provider } = await chat(
       'You are a blockchain contract analyst. Only reason about the verified on-chain facts supplied. Never invent balances, addresses, prices or links. Reply with strict JSON only: {"summary":string,"recoveryStatus":string,"recoveryReason":string,"potentialStuckValue":string,"risk":string,"confidence":string}.',
       JSON.stringify(data),
@@ -75,6 +81,8 @@ export const researchProject = createServerFn({ method: "POST" })
     z.object({ query: z.string().min(2).max(120), address: z.string() }).parse(d),
   )
   .handler(async ({ data }) => {
+    const { enforceRateLimit } = await import("./rate-limit.server");
+    await enforceRateLimit("researchProject", 20, 3600);
     const firecrawl = process.env["FIRECRAWL_API_KEY"];
     if (!firecrawl) return { available: false as const, results: [] };
     try {
