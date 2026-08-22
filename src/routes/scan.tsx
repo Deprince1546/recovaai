@@ -145,8 +145,10 @@ function ScanPage() {
   }
 
   return (
-    <main className="min-h-screen px-5 pt-32 pb-24">
-      <div className="mx-auto max-w-3xl">
+    <main className="min-h-screen px-4 pt-28 pb-24 sm:px-6 sm:pt-32">
+      <div className="mx-auto w-full max-w-6xl">
+        <div className="max-w-3xl">
+
         <p className="eyebrow">Scanner</p>
         <h1 className="display-serif mt-3 text-[clamp(2.2rem,6vw,3.6rem)] leading-[1.02] text-foreground">
           Find what is trapped
