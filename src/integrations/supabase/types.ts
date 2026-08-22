@@ -14,6 +14,30 @@ export type Database = {
   }
   public: {
     Tables: {
+      api_rate_limits: {
+        Row: {
+          bucket_key: string
+          endpoint: string
+          id: string
+          request_count: number
+          window_start: string
+        }
+        Insert: {
+          bucket_key: string
+          endpoint: string
+          id?: string
+          request_count?: number
+          window_start?: string
+        }
+        Update: {
+          bucket_key?: string
+          endpoint?: string
+          id?: string
+          request_count?: number
+          window_start?: string
+        }
+        Relationships: []
+      }
       deployments: {
         Row: {
           abi: Json
