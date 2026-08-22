@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
-import mp4Asset from "@/assets/recova-hero.mp4.asset.json";
-import webmAsset from "@/assets/recova-hero.webm.asset.json";
-import posterAsset from "@/assets/recova-hero-poster.jpg.asset.json";
+const MP4_SRC = "/media/recova-hero.mp4";
+const WEBM_SRC = "/media/recova-hero.webm";
+const POSTER_SRC = "/media/recova-hero-poster.jpg";
 
 export function HeroVideo() {
   const ref = useRef<HTMLVideoElement>(null);
@@ -32,10 +32,10 @@ export function HeroVideo() {
         loop
         playsInline
         preload="auto"
-        poster={posterAsset.url}
+        poster={POSTER_SRC}
       >
-        <source src={webmAsset.url} type="video/webm" />
-        <source src={mp4Asset.url} type="video/mp4" />
+        <source src={WEBM_SRC} type="video/webm" />
+        <source src={MP4_SRC} type="video/mp4" />
       </video>
     </div>
   );
