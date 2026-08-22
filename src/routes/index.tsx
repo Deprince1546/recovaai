@@ -108,13 +108,14 @@ function Landing() {
         <div className="h-16" />
       </section>
 
-      <section className="relative border-t border-border px-5 py-24">
-        <div className="mx-auto max-w-5xl">
+      <section className="relative border-t border-border px-4 py-20 sm:px-6 sm:py-24">
+        <div className="mx-auto w-full max-w-6xl">
           <p className="eyebrow">Capabilities</p>
-          <h2 className="display-serif mt-3 text-[clamp(2rem,5vw,3.2rem)] leading-[1.05] text-foreground">
+          <h2 className="display-serif mt-3 text-[clamp(1.9rem,5vw,3.2rem)] leading-[1.05] text-foreground">
             Everything runs against real chain state
           </h2>
           <div className="mt-12 grid gap-5 md:grid-cols-2">
+
             {CAPABILITIES.map((c) => (
               <Link
                 key={c.title}
@@ -132,8 +133,9 @@ function Landing() {
         </div>
       </section>
 
-      <footer className="border-t border-border px-5 py-10">
-        <div className="mx-auto flex max-w-5xl items-center justify-between text-xs text-muted-foreground">
+      <footer className="border-t border-border px-4 py-10 sm:px-6">
+        <div className="mx-auto flex w-full max-w-6xl items-center justify-between text-xs text-muted-foreground">
+
           <span>RECOVA</span>
           <span>Built on X Layer</span>
         </div>
