@@ -282,8 +282,10 @@ function ScanPage() {
             </section>
           </>
         )}
+        </div>
       </div>
     </main>
+
   );
 }
 
