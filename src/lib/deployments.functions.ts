@@ -59,7 +59,7 @@ export const recordDeployment = createServerFn({ method: "POST" })
       token_name: data.name,
       token_symbol: data.symbol,
       decimals: data.decimals,
-      supply: data.supply,
+      supply: Number(data.supply),
       description: data.description ?? null,
       logo: data.imageUrl ?? null,
       source_code: artifact.sourceCode,
